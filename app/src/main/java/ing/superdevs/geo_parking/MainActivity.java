@@ -3,10 +3,14 @@ package ing.superdevs.geo_parking;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,7 +21,7 @@ import java.util.StringTokenizer;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText EtNombreComp,EtCedula,EtTelefono,EtNroPosPArqueadero;
+    EditText EtNombreComp, EtCedula, EtTelefono, EtNroPosPArqueadero;
     Button BtReservar;
     TextView TLlenado;
     String a;
@@ -29,29 +33,39 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         inicializar();
 
-        String  Datos=getIntent().getExtras().getString("a","---");
+        String Datos = getIntent().getExtras().getString("a", "---");
 
-        if(!Datos.equals("---")){
-
+        if (!Datos.equals("---")) {
+            sacarTexto(Datos);
         }
     }
-    public void sacarTexto(String tex){
+
+    public void sacarTexto(String texto) {
 
 
-        StringTokenizer texto=tex;
-        while (tex.)
+        String pausa = "*";
+
+        StringTokenizer token = new StringTokenizer(texto, pausa);
+
+        String Nombre = token.nextToken();
+        token.nextToken();
+        String Cedula = token.nextToken();
+        token.nextToken();
+        String Telefono = token.nextToken();
+        token.nextToken();
+        String NroPosPArqueadero= token.nextToken();
 
 
-        this.EtNombreComp.setText("");
-        this.EtCedula.setText("");
-        this.EtTelefono.setText("");
-        this.EtNroPosPArqueadero.setText("");
+        EtNombreComp.setText(Nombre);
+        this.EtCedula.setText(Cedula);
+        this.EtTelefono.setText(Telefono);
+        this.EtNroPosPArqueadero.setText(NroPosPArqueadero);
 
     }
 
     public void Reservar(View view) {
 
-        Usuario usuario=new Usuario(EtNombreComp.getText().toString(),EtCedula.getText().toString(),EtTelefono.getText().toString(),EtNroPosPArqueadero.getText().toString());
+        Usuario usuario = new Usuario(EtNombreComp.getText().toString(), EtCedula.getText().toString(), EtTelefono.getText().toString(), EtNroPosPArqueadero.getText().toString());
 
         if (ContextCompat.checkSelfPermission(getApplicationContext(),
                 android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
@@ -62,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                     Manifest.permission.WRITE_EXTERNAL_STORAGE
             }, 1);
 
-        }else {//si los permisos estan dados que pase a generar el QR
+        } else {//si los permisos estan dados que pase a generar el QR
 
             try {
 
@@ -84,12 +98,14 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
     private void limpiar() {
         this.EtNombreComp.setText("");
         this.EtCedula.setText("");
         this.EtTelefono.setText("");
         this.EtNroPosPArqueadero.setText("");
     }
+
     public void Llenar(View v) {
         this.EtNombreComp.setText("Daniela Delgado Causil");
         this.EtCedula.setText("107318745");
@@ -98,12 +114,42 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void inicializar() {
-        TLlenado=findViewById(R.id.TLlenado);
-        EtNombreComp=findViewById(R.id.EtNombreComp);
-        EtCedula=findViewById(R.id.EtCedula);
-        EtTelefono=findViewById(R.id.EtTelefono);
-        EtNroPosPArqueadero=findViewById(R.id.EtNroPosPArqueadero);
-        BtReservar=findViewById(R.id.BtReservar);
+        TLlenado = findViewById(R.id.TLlenado);
+        EtNombreComp = findViewById(R.id.EtNombreComp);
+        EtCedula = findViewById(R.id.EtCedula);
+        EtTelefono = findViewById(R.id.EtTelefono);
+        EtNroPosPArqueadero = findViewById(R.id.EtNroPosPArqueadero);
+        BtReservar = findViewById(R.id.BtReservar);
+    }
+
+
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+
+        switch (item.getItemId()) {
+
+            case R.id.escanear:
+                Intent intent = new Intent(getApplicationContext(), EscanerActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.lista:
+                Toast.makeText(this, "Por implementar...", Toast.LENGTH_SHORT).show();
+                break;
+
+        }
+
+
+        return super.onOptionsItemSelected(item);
     }
 
 }
