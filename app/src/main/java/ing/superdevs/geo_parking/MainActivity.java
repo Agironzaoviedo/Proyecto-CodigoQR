@@ -13,6 +13,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.StringTokenizer;
+
 public class MainActivity extends AppCompatActivity {
 
     EditText EtNombreComp,EtCedula,EtTelefono,EtNroPosPArqueadero;
@@ -26,6 +28,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         inicializar();
+
+        String  Datos=getIntent().getExtras().getString("a","---");
+
+        if(!Datos.equals("---")){
+
+        }
+    }
+    public void sacarTexto(String tex){
+
+
+        StringTokenizer texto=tex;
+        while (tex.)
+
+
+        this.EtNombreComp.setText("");
+        this.EtCedula.setText("");
+        this.EtTelefono.setText("");
+        this.EtNroPosPArqueadero.setText("");
 
     }
 
