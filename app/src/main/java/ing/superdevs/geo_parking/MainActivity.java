@@ -137,6 +137,7 @@ public class MainActivity extends AppCompatActivity {
             sacarTexto(Texto);
         }catch (Exception e){
             e.printStackTrace();
+            Toast.makeText(this, "Codigo incorrecto!", Toast.LENGTH_SHORT).show();
         }
     }
 
