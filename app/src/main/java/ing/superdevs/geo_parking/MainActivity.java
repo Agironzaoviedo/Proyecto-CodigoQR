@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     EditText EtNombreComp,EtCedula,EtTelefono,EtNroPosPArqueadero;
     Button BtReservar;
     TextView TLlenado;
+    String a;
 
 
     @Override
