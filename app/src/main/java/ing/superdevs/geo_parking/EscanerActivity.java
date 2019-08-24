@@ -31,6 +31,7 @@ public class EscanerActivity extends AppCompatActivity implements ZXingScannerVi
     protected void onPause() {
         super.onPause();
         scannerView.stopCamera();
+
     }
 
 
@@ -55,7 +56,7 @@ public class EscanerActivity extends AppCompatActivity implements ZXingScannerVi
 
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            finish();
+
                             startActivity(i);
                         }
                     }

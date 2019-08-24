@@ -32,11 +32,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         inicializar();
+        try {
 
-        String Datos = getIntent().getExtras().getString("a", "---");
+            String Datos = getIntent().getExtras().getString("Lectura", "---");
 
-        if (!Datos.equals("---")) {
-            sacarTexto(Datos);
+            if (!Datos.equals("---")) {
+                sacarTexto(Datos);
+            }
+        } catch (Exception e) {
+            Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
         }
     }
 
@@ -53,9 +58,9 @@ public class MainActivity extends AppCompatActivity {
         token.nextToken();
         String Telefono = token.nextToken();
         token.nextToken();
-        String NroPosPArqueadero= token.nextToken();
+        String NroPosPArqueadero = token.nextToken();
 
-
+        Toast.makeText(this, texto, Toast.LENGTH_SHORT).show();
         EtNombreComp.setText(Nombre);
         this.EtCedula.setText(Cedula);
         this.EtTelefono.setText(Telefono);
@@ -120,10 +125,39 @@ public class MainActivity extends AppCompatActivity {
         EtTelefono = findViewById(R.id.EtTelefono);
         EtNroPosPArqueadero = findViewById(R.id.EtNroPosPArqueadero);
         BtReservar = findViewById(R.id.BtReservar);
+        ActivityCompat.requestPermissions(this, new String[]{
+                Manifest.permission.CAMERA
+        }, 1);
+
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(this, new String[]{
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE
+            }, 2);
+
+        }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
 
+        try {
 
+            Intent intent = getIntent();
+            String Datos = intent.getExtras().getString("Lectura", "---");
+            Toast.makeText(this, Datos, Toast.LENGTH_SHORT).show();
+
+            if (!Datos.equals("---")) {
+                sacarTexto(Datos);
+            }
+        } catch (Exception e) {
+            Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -142,9 +176,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), EscanerActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.lista:
-                Toast.makeText(this, "Por implementar...", Toast.LENGTH_SHORT).show();
-                break;
+
 
         }
 
