@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".VistaCodigoQR">
+
+    <TextView
+        android:id="@+id/Vnombre"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textColor="@color/colorAccent"
+        android:textAllCaps="true"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:text="Nombre del Alumno"
+        android:layout_width="match_parent"
+        android:layout_height="0dp" />
+
+    <ImageView
+        android:id="@+id/VimagenQR"
+        android:layout_weight="6"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:src="@drawable/falla_al_crear_qr"
+        />
+    <Button
+        android:id="@+id/VbtnCompartirCon"
+        android:layout_weight="1.7"
+        android:text="Compartir con: "
+        android:textColor="#00a98f"
+        android:drawableTop="@drawable/whatsapp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_marginRight="60dp"
+        android:layout_marginLeft="60dp"
+        android:background="@color/colorPrimary"
+        android:layout_height="1dp"/>
+
+    <Button
+        android:id="@+id/VbtnCompartir"
+        android:layout_weight="1"
+        android:text="Compartir"
+        android:textColor="@color/colorAccent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:onClick="compartir"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="10dp"
+        android:layout_height="0dp" />
+
+</LinearLayout>

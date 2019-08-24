@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffff"
+    tools:context=".MainActivity">
+
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:id="@+id/TLlenado"
+            android:text="Ingrese su información"
+            android:paddingLeft="10dp"
+            android:textSize="20sp"
+            android:onClick="Llenar"
+            android:textColor="@color/colorAccent"
+            android:textAllCaps="true"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:paddingTop="3dp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:hint="Nombre completo"
+            android:paddingLeft="13dp"
+            android:paddingRight="13dp"
+            android:layout_marginLeft="10dp"
+            android:layout_margin="2dp"
+            android:background="@drawable/rounded_border_edittext"
+            android:layout_height="wrap_content">
+            <EditText
+                android:inputType="text"
+                android:id="@+id/EtNombreComp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:hint="Cedula"
+            android:paddingLeft="13dp"
+            android:layout_margin="2dp"
+            android:paddingRight="13dp"
+            android:background="@drawable/rounded_border_edittext"
+            android:layout_height="wrap_content">
+            <EditText
+                android:inputType="numberDecimal"
+                android:id="@+id/EtCedula"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:hint="Telefono"
+            android:layout_margin="2dp"
+            android:background="@drawable/rounded_border_edittext"
+            android:paddingLeft="13dp"
+            android:paddingRight="13dp"
+            android:layout_height="wrap_content">
+            <EditText
+                android:inputType="numberDecimal"
+                android:id="@+id/EtTelefono"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:hint="Nro Pos. Parqueadero"
+            android:layout_margin="2dp"
+            android:background="@drawable/rounded_border_edittext"
+            android:paddingLeft="13dp"
+            android:paddingRight="13dp"
+
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/EtNroPosPArqueadero"
+                android:inputType="numberDecimal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/BtReservar"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:padding="30dp"
+            android:onClick="Reservar"
+            android:background="@drawable/rounded_border_edittext"
+            android:layout_width="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:layout_height="wrap_content"
+            android:text="reservar"
+            />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
