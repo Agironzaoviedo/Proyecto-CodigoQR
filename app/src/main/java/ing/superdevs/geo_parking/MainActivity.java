@@ -25,24 +25,14 @@ public class MainActivity extends AppCompatActivity {
     Button BtReservar;
     TextView TLlenado;
     String a;
-
+    public static String Texto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         inicializar();
-        try {
 
-            String Datos = getIntent().getExtras().getString("Lectura", "---");
-
-            if (!Datos.equals("---")) {
-                sacarTexto(Datos);
-            }
-        } catch (Exception e) {
-            Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
-            e.printStackTrace();
-        }
     }
 
     public void sacarTexto(String texto) {
@@ -51,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         String pausa = "*";
 
         StringTokenizer token = new StringTokenizer(texto, pausa);
-
+        token.nextToken();
         String Nombre = token.nextToken();
         token.nextToken();
         String Cedula = token.nextToken();
@@ -60,11 +50,11 @@ public class MainActivity extends AppCompatActivity {
         token.nextToken();
         String NroPosPArqueadero = token.nextToken();
 
-        Toast.makeText(this, texto, Toast.LENGTH_SHORT).show();
         EtNombreComp.setText(Nombre);
         this.EtCedula.setText(Cedula);
         this.EtTelefono.setText(Telefono);
         this.EtNroPosPArqueadero.setText(NroPosPArqueadero);
+        Texto="";
 
     }
 
@@ -143,18 +133,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
         try {
-
-            Intent intent = getIntent();
-            String Datos = intent.getExtras().getString("Lectura", "---");
-            Toast.makeText(this, Datos, Toast.LENGTH_SHORT).show();
-
-            if (!Datos.equals("---")) {
-                sacarTexto(Datos);
-            }
-        } catch (Exception e) {
-            Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
+            sacarTexto(Texto);
+        }catch (Exception e){
             e.printStackTrace();
         }
     }

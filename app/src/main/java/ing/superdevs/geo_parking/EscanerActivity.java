@@ -7,14 +7,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-
 import com.google.zxing.Result;
-
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
+import static ing.superdevs.geo_parking.MainActivity.Texto;
 
 public class EscanerActivity extends AppCompatActivity implements ZXingScannerView.ResultHandler{
 
     private ZXingScannerView scannerView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +40,7 @@ public class EscanerActivity extends AppCompatActivity implements ZXingScannerVi
 
         final Intent i = new Intent(this, MainActivity.class);
         i.putExtra("Lectura", result.getText());
+        Texto=result.getText();
         // vanderas para que cuando pase a la informacion y dé atras no vuelva al scan
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
 
